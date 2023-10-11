@@ -1,3 +1,5 @@
+let tableData = [];
+
 function CreateTable() {
   let table = document.getElementById("score_table");
   table.innerHTML = "";
@@ -5,8 +7,10 @@ function CreateTable() {
   table.appendChild(CreateHeaderRow());
 
   for (let i = 0; i < 120; i++) {
-    table.appendChild(CreateOneRow(i + 1));
+    table.appendChild(CreateOneRow(i + 1, tableData));
   }
+
+  tableData = tableData.join("\n");
 }
 
 function CreateHeaderRow() {
@@ -31,7 +35,7 @@ function CreateHeaderRow() {
   return PushDataToRow(headerRowContents);
 }
 
-function CreateOneRow(index) {
+function CreateOneRow(index, container) {
   let rowData = [];
 
   rowData.push(index);
@@ -42,6 +46,8 @@ function CreateOneRow(index) {
   for (let i = 0; i < 10; i++) {
     rowData.push(Math.floor(Math.random() * 10));
   }
+
+  container.push(rowData.join(","));
 
   return PushDataToRow(rowData);
 }
@@ -90,4 +96,32 @@ function GenerateAccount() {
   );
 
   return accountName;
+}
+
+/**
+ * turn table to csv file and download it
+ * take references about the covert to csv file and download part
+ * https://www.geeksforgeeks.org/how-to-export-html-table-to-csv-using-javascript/
+ */
+function DownloadCSVFile() {
+  // Create CSV file object and feed our
+  // csv_data into it
+  CSVFile = new Blob([tableData], { type: "text/csv" });
+
+  // Create to temporary link to initiate
+  // download process
+  var temp_link = document.createElement("a");
+
+  // Download csv file
+  temp_link.download = "score.csv";
+  var url = window.URL.createObjectURL(CSVFile);
+  temp_link.href = url;
+
+  // This link should not be displayed
+  temp_link.style.display = "none";
+  document.body.appendChild(temp_link);
+
+  // Automatically click the link to trigger download
+  temp_link.click();
+  document.body.removeChild(temp_link);
 }
