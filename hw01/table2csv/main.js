@@ -3,14 +3,36 @@ let tableData = [];
 function CreateTable() {
   let table = document.getElementById("score_table");
   table.innerHTML = "";
-
   table.appendChild(CreateHeaderRow());
 
-  for (let i = 0; i < 120; i++) {
-    table.appendChild(CreateOneRow(i + 1, tableData));
+  let studentQ = GenerateStudentQ();
+  let counter = 0;
+
+  for (let i = 0; i < studentQ.length; i++) {
+    let first = Math.floor(
+      Math.random() * (studentQ[i] - studentQ[i] / 3) + studentQ[i] / 3
+    );
+    let second = studentQ[i] - first;
+
+    for (let j = 0; j < studentQ[i]; j++) {
+      table.appendChild(CreateOneRow(counter + 1, tableData, i));
+      counter++;
+    }
   }
 
   tableData = tableData.join("\n");
+}
+
+function GenerateStudentQ() {
+  let studentQ = [];
+  let sum = 0;
+  for (let i = 0; i < 4; i++) {
+    temp = Math.floor(Math.random() * ((120 - sum) / 2 - 1) + 1);
+    studentQ.push(temp);
+    sum += temp;
+  }
+  studentQ.push(120 - sum);
+  return studentQ;
 }
 
 function CreateHeaderRow() {
@@ -35,12 +57,15 @@ function CreateHeaderRow() {
   return PushDataToRow(headerRowContents);
 }
 
-function CreateOneRow(index, container) {
+function CreateOneRow(index, container, classIndex) {
   let rowData = [];
 
   rowData.push(index);
-  rowData.push("資工四");
-  rowData.push(109590 + index.toString().padStart(3, "0"));
+
+  let studentInformation = GenerateClassAndId(classIndex);
+  rowData.push(studentInformation[0]);
+  rowData.push(studentInformation[1]);
+
   rowData.push(GenerateName());
   rowData.push(GenerateAccount());
   for (let i = 0; i < 10; i++) {
@@ -63,6 +88,26 @@ function PushDataToRow(data) {
   return row;
 }
 
+function GenerateClassAndId(classIndex) {
+  const classes = ["資工", "資工碩", "電資AI", "電資資安", "創新AI"];
+  const departmentCode = ["590", "598", "C52", "C53", "C71"];
+
+  const year = [111, 112];
+  const grade = ["三", "四"];
+
+  let temp = Math.random() < 0.5 ? 0 : 1;
+
+  let theClass = classes[classIndex] + grade[temp];
+  let studentID =
+    year[temp] +
+    departmentCode[classIndex] +
+    Math.floor(Math.random() * (999 - 1) + 1)
+      .toString()
+      .padStart(3, "0");
+
+  return [theClass, studentID];
+}
+
 function GenerateName() {
   let name = "";
   for (let i = 0; i < 3; i++) {
@@ -76,7 +121,7 @@ function GenerateName() {
 }
 
 function GenerateAccount() {
-  let length = Math.floor(Math.random() * (10 - 4 + 1) + 4);
+  let length = 10;
   let accountName = "";
 
   /*
@@ -91,9 +136,11 @@ function GenerateAccount() {
       Math.floor(Math.random() * (122 - 97 + 1) + 97)
     );
   }
-  accountName += String.fromCharCode(
-    Math.floor(Math.random() * (57 - 48 + 1) + 48)
-  );
+  for (let i = 0; i < 2; i++) {
+    accountName += String.fromCharCode(
+      Math.floor(Math.random() * (57 - 48 + 1) + 48)
+    );
+  }
 
   return accountName;
 }
