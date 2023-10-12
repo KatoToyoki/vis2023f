@@ -54,6 +54,8 @@ function CreateHeaderRow() {
     "作業十",
   ];
 
+  tableData.push(headerRowContents);
+
   return PushDataToRow(headerRowContents);
 }
 

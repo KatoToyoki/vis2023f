@@ -24,6 +24,61 @@ function AppleIconRow() {
   return row;
 }
 
-function WebOnLoad() {
-  AppleTable();
+function ReadCSV(table, header) {
+  d3.csv("../score.csv", function (data) {
+    let mapData = [null].concat(data);
+
+    let rows = table.selectAll("tr").data(mapData).enter().append("tr");
+
+    let cols = rows
+      .selectAll("td")
+      .data(function (row) {
+        return header.map(function (col, index) {
+          return { col: col, value: row[col] };
+        });
+      })
+      .enter()
+      .append("td")
+      .text(function (d) {
+        return d.value;
+      });
+  });
 }
+
+function CSVtoTable() {
+  let headerRowContents = [
+    "序號",
+    "班級",
+    "學號",
+    "姓名",
+    "GitHub",
+    "作業一",
+    "作業二",
+    "作業三",
+    "作業四",
+    "作業五",
+    "作業六",
+    "作業七",
+    "作業八",
+    "作業九",
+    "作業十",
+  ];
+
+  let table = d3.select("#score_table").append("table");
+  table
+    .append("tr")
+    .selectAll("td")
+    .data(headerRowContents)
+    .enter()
+    .append("td")
+    .text(function (col) {
+      return col;
+    });
+
+  ReadCSV(table, headerRowContents);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  AppleTable();
+  CSVtoTable();
+});
