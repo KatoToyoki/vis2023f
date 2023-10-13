@@ -32,14 +32,20 @@ function ReadCSV(table, header) {
 
     let cols = rows
       .selectAll("td")
-      .data(function (row) {
-        return header.map(function (col, index) {
-          return { col: col, value: row[col] };
+      .data(function (container) {
+        return header.map(function (key) {
+          console.log(key, container[key]);
+          if (key.includes("作業")) {
+            let img = `<img src="../images/${container[key]}.svg" width="40"/>`;
+            return { key: key, value: img };
+          } else {
+            return { key: key, value: container[key] };
+          }
         });
       })
       .enter()
       .append("td")
-      .text(function (d) {
+      .html(function (d) {
         return d.value;
       });
   });
