@@ -1,19 +1,35 @@
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 td {
-    border: 1px solid black;
-    padding: 5px;
-    text-align: center;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
 }
 
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-button{
-    padding: 10px;
+button {
+  padding: 10px;
+}
+
+.white {
+  color: white;
+}
+
+.transfer {
+  color: white;
+  padding: 1%;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
+
+.transfer:hover {
+  background-color: darksalmon;
+  transition-duration: 0.5s;
 }

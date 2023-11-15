@@ -13,6 +13,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
+
+<link href="style.css" rel="stylesheet" />
+
 <title>作品集 Portfolio</title>
 <!-- https://alexlenail.me/NN-SVG/about.html -->
 <link rel="icon" href="../hw00/favicon.svg"/>
@@ -156,7 +159,7 @@
   /* 波浪 */
 </style>
 </head>
-<body>
+<body style="padding-bottom: 50px;">
 <!-- https://alexlenail.me/NN-SVG/about.html -->
 <a href="https://tjhsieh.github.io/c/vis/vis2023f/syllabus/index.html" class="github-corner" aria-label="View source on Github">
   <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#f9eced; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
@@ -176,16 +179,23 @@
   </div>
 
   <!-- ------------------------------------------------>
+
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      該次作業程式碼，請放在 https://github.com/<span style="color:red;">你的帳號</span>/vis2023f/hw<span style="color:red;">01</span>/src/ 檔案夾。
+      打開作品集資料夾 (GitHub 倉庫 vis2023f 傳送門) 
+      <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw01">
+        點我٩(｡・ω・｡)و  
+      </a>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
+      這次自己產出csv, 先用原生js做表格、在用d3.js做表格讓我學到了不少。
+      我一直以來都是用框架比較多，所以在寫原生js的時候還真的有點不習慣，也遇到很多問題，但幸好最後都解決了。
+      而我以為要用js讀csv再用d3配對成績跟蘋果，結果用d3讀csv很快也很好用，只是後續的function都必須寫在裡面。
+      strong的那個圖花了比較久時間，用別人的東西真的蠻難的。
     </div>
   </div>
 
@@ -200,76 +210,151 @@
           <th>分項描述</th>
         </tr>
         <tr>
-          <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
+          <td rowspan="4" id="myTotal"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked></td>
           <td id='m1'>2</td>
-          <td>Simple baseline - 描述、描述、描述</td>
+          <td>Simple baseline - 產生 Dummy CSV 虛構成績表</td>
+         
         </tr>
         <tr>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>6</td>
-          <td>Medium baseline - 描述、描述、描述 </td>
+          <td id='m2'>2</td>
+          <td>Simple baseline - 繪製 v3 蘋果成績表</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
           <td id='m3'>2</td>
-          <td>Strong baseline - 描述、描述、描述 </td>
+          <td>Medium baseline - 繪製 v7 蘋果成績表</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked></td>
+          <td id='m4'>4</td>
+          <td>Strong baseline - 繪製 v7 創新成績表，參考D3畫廊，修改範例，推出創新成績表</td>
         </tr>
       </table>
+
     </div>
   </div>
 
   <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
+  <hr style="color: #fff; opacity: 1;"/>
+
+  <h2 class="center white"><b>Simple baseline - 產生 Dummy CSV 虛構成績表</b></h2>
+ 
+  <div class="row">
+    <div class="col-sm-6 center transfer">
+      <a href="https://katotoyoki.github.io/vis2023f/hw01/src-easy/index.html">
+        前往demo網站
+      </a> 
+    </div>
+    <div class="col-sm-6 center transfer">
+      <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw01/src-easy">
+        前往repo
+      </a>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
+  <div class="center">
+    <iframe src="src-easy/index.html" width="1280" height="720"></iframe>
+  </div>
 
-  <!-- ------------------------------------------------>
-
-
-<script>
-  $(function() {
-    var f = function() {
-      $(this).next().text($(this).is(':checked') ? '做完' : '未做完');
-    };
-    $('input').change(f).trigger('change');
-  });
-
-  d3.select("#myCheckbox1").on("change",update);
-  d3.select("#myCheckbox2").on("change",update);
-  d3.select("#myCheckbox3").on("change",update);
-  d3.select("#myCheckbox4").on("change",update);
-  d3.select("#myCheckbox5").on("change",update);
-  d3.select("#myCheckbox6").on("change",update);
-  d3.select("#myCheckbox7").on("change",update);
-
-  update();
+  <br/>
+  <h2 style="color: #fff" class="center"><b>Simple baseline - 繪製 v3 蘋果成績表</b></h2>
   
-  function update(){
+  <div class="row">
+    <div class="col-sm-6 center transfer">
+      <a href="https://katotoyoki.github.io/vis2023f/hw01/src-medium-v3/index.html">
+        前往demo網站
+      </a> 
+    </div>
+    <div class="col-sm-6 center transfer">
+      <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw01/src-medium-v3">
+        前往repo
+      </a>
+    </div>
+  </div>
 
-    var score = 0;
+  <div class="center">
+    <iframe src="src-medium-v3/index.html" width="1280" height="720"></iframe>
+  </div>
 
-    if (d3.select("#myCheckbox1").property("checked")){
-      score += parseInt(d3.select('#m1').html());
+  <br/>
+  <h2 style="color: #fff" class="center"><b>Medium baseline - 繪製 v7 蘋果成績表</b></h2>
+  
+  <div class="row">
+    <div class="col-sm-6 center transfer">
+      <a href="https://katotoyoki.github.io/vis2023f/hw01/medium-v7/index.html">
+        前往demo網站
+      </a> 
+    </div>
+    <div class="col-sm-6 center transfer">
+      <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw01/medium-v7">
+        前往repo
+      </a>
+    </div>
+  </div>
+
+  <div class="center">
+    <iframe src="medium-v7/index.html" width="1280" height="720"></iframe>
+  </div>
+
+  <br/>
+  <h2 style="color: #fff" class="center"><b>Strong baseline - 繪製 v7 創新成績表，參考D3畫廊，修改範例，推出創新成績表</b></h2>
+  
+  <div class="row">
+    <div class="col-sm-6 center transfer">
+      <a href="https://katotoyoki.github.io/vis2023f/hw01/src-strong/index.html">
+        前往demo網站
+      </a> 
+    </div>
+    <div class="col-sm-6 center transfer">
+      <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw01/src-strong">
+        前往repo
+      </a>
+    </div>
+  </div>
+  
+  <div class="center">
+    <iframe src="src-strong/index.html" width="1280" height="500"></iframe>
+  </div>
+  
+  <!-- ------------------------------------------------>
+
+  <script>
+    $(function() {
+      var f = function() {
+        $(this).next().text($(this).is(':checked') ? '做完' : '未做完');
+      };
+      $('input').change(f).trigger('change');
+    });
+  
+    d3.select("#myCheckbox1").on("change",update);
+    d3.select("#myCheckbox2").on("change",update);
+    d3.select("#myCheckbox3").on("change",update);
+    d3.select("#myCheckbox4").on("change",update);
+    d3.select("#myCheckbox5").on("change",update);
+    d3.select("#myCheckbox6").on("change",update);
+    d3.select("#myCheckbox7").on("change",update);
+  
+    update();
+    
+    function update(){
+      var score = 0;
+      if (d3.select("#myCheckbox1").property("checked")){
+        score += parseInt(d3.select('#m1').html());
+      }
+      if (d3.select("#myCheckbox2").property("checked")){
+        score += parseInt(d3.select('#m2').html());   
+      }
+      if (d3.select("#myCheckbox3").property("checked")){
+        score += parseInt(d3.select('#m3').html());   
+      }
+      if (d3.select("#myCheckbox4").property("checked")){
+        score += parseInt(d3.select('#m4').html());   
+      }
+      d3.select("#myTotal").html(score);    
     }
-
-    if (d3.select("#myCheckbox2").property("checked")){
-      score += parseInt(d3.select('#m2').html());   
-    }
-
-    if (d3.select("#myCheckbox3").property("checked")){
-      score += parseInt(d3.select('#m3').html());   
-    }
-
-    d3.select("#myTotal").html(score);    
-  }
-</script>
-
+  </script>
+  
 </body>
 </html>
