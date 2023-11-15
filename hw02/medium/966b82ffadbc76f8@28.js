@@ -5,7 +5,7 @@ function _1(md) {
 }
 
 function _data(FileAttachment) {
-  return FileAttachment("../data.json").json();
+  return FileAttachment("data.json").json();
 }
 
 function _yCounts() {
@@ -66,10 +66,7 @@ export default function define(runtime, observer) {
     [
       "data.json",
       {
-        url: new URL(
-          "./files/2259824662fb612853b8873b8814ace51e8cbac39ba881850d66e26df63f1897b01d1bd3459af6529669fd912da9dd607a30666a93278d7fdfa10bbe22b8913d.json",
-          import.meta.url
-        ),
+        url: new URL("../data.json", import.meta.url),
         mimeType: "application/json",
         toString,
       },
