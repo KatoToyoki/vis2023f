@@ -178,14 +178,17 @@
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      該次作業程式碼，請放在 https://github.com/<span style="color:red;">你的帳號</span>/vis2023f/hw<span style="color:red;">06</span>/src/ 檔案夾。
+      <a href="https://你的帳號.github.io/vis2023f/hw06/src/">
+        https://katotoyoki.github.io/vis2023f/hw06/src/
+      </a>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
+      這週要收的作業有四份。這終於是最後一份了。我在上這門課前對於圖形的認知只有少少幾種。大概就是大家都知道的什麼折線圖、長條圖等等的。
+      但這門課讓我知道很多可以被運用在不同地方的表達資料的圖表方式。雖然用js畫圖真的是頗麻煩，但是看到圖表出來還是蠻開心的。
     </div>
   </div>
 
@@ -199,22 +202,58 @@
           <th>配分</th>
           <th>分項描述</th>
         </tr>
+              
         <tr>
           <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
+          <td>
+            <input type="checkbox" class="flipswitch" id="myCheckbox1" checked>   
+            </input>          
+          </td>
+          </td>
           <td id='m1'>2</td>
-          <td>Simple baseline - 描述、描述、描述</td>
+          <td>Simple baseline - 利用Plot完成堆疊柱狀圖 </td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>6</td>
-          <td>Medium baseline - 描述、描述、描述 </td>
+          <td>
+            <input type="checkbox" class="flipswitch" id="myCheckbox2" checked>                      
+            </input>
+          </td>
+          <td id='m2'>1</td>
+          <td>Simple baseline - 加入Checkbox input使其可選擇呈現的資料集 </td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
-          <td id='m3'>2</td>
-          <td>Strong baseline - 描述、描述、描述 </td>
+          <td>
+            <input type="checkbox" class="flipswitch" id="myCheckbox3" checked>
+            </input>
+          </td>
+          <td id='m3'>3</td>
+          <td>Medium baseline - 利用SVG完成堆疊柱狀圖(含Checkbox) </td>
         </tr>
+        <tr>
+          <td>
+            <input type="checkbox" class="flipswitch" id="myCheckbox4"checked>
+            </input>
+          </td>
+          <td id='m4'>1</td>
+          <td>Medium baseline - 加入D3的過渡效果 </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" class="flipswitch" id="myCheckbox5" checked>
+            </input>
+          </td>
+          <td id='m5'>2</td>
+          <td>Strong baseline - 利用SVG製成的堆疊柱狀圖添加陰影效果 </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" class="flipswitch" id="myCheckbox6" checked>
+            </input>
+          </td>
+          <td id='m6'>1</td>
+          <td>Strong baseline - 添加滑鼠游標偵測效果 </td>
+        </tr>
+
       </table>
     </div>
   </div>
@@ -222,9 +261,8 @@
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
+      <iframe width="100%" height="500" frameborder="0" style="background-color: #FFFFFF"
+      src="https://observablehq.com/embed/936e160864647a5d@253?cell=*"></iframe>
     </div>
   </div>
 
@@ -265,6 +303,18 @@
 
     if (d3.select("#myCheckbox3").property("checked")){
       score += parseInt(d3.select('#m3').html());   
+    }
+
+    if (d3.select("#myCheckbox4").property("checked")){
+      score += parseInt(d3.select('#m4').html());
+    }
+
+    if (d3.select("#myCheckbox5").property("checked")){
+      score += parseInt(d3.select('#m5').html());   
+    }
+
+    if (d3.select("#myCheckbox6").property("checked")){
+      score += parseInt(d3.select('#m6').html());   
     }
 
     d3.select("#myTotal").html(score);    
