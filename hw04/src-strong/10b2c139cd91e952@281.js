@@ -522,7 +522,7 @@ export default function define(runtime, observer) {
     [
       "artist@1.csv",
       {
-        url: new URL("./artist.csv", import.meta.url),
+        url: new URL("../artist.csv", import.meta.url),
         mimeType: "text/csv",
         toString,
       },
