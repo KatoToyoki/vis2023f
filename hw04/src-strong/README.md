@@ -1,6 +1,6 @@
 # HW04 Sunburst
 
-https://observablehq.com/d/10b2c139cd91e952@281
+https://observablehq.com/d/10b2c139cd91e952@323
 
 View this notebook in your browser by running a web server in this folder. For
 example:
@@ -14,7 +14,7 @@ import this module directly into your application. To npm install:
 
 ~~~sh
 npm install @observablehq/runtime@5
-npm install https://api.observablehq.com/d/10b2c139cd91e952@281.tgz?v=3
+npm install https://api.observablehq.com/d/10b2c139cd91e952@323.tgz?v=3
 ~~~
 
 Then, import your notebook and the runtime as:

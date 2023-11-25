@@ -513,6 +513,88 @@ function _breadcrumbHeight() {
   return 30;
 }
 
+function _eData(artist) {
+  return artist.map(
+    (item) =>
+      item["6） 請勾選您心目中藝術跟環境保護（E）的相關度。（如節能減碳）"]
+  );
+}
+
+function _sData(artist) {
+  return artist.map(
+    (item) =>
+      item["7） 請勾選您心目中藝術跟社會責任（S）的相關度。（如關懷共感）"]
+  );
+}
+
+function _gData(artist) {
+  return artist.map(
+    (item) =>
+      item["8） 請勾選您心目中藝術跟機構治理（G）的相關度。（如永續章程  ）"]
+  );
+}
+
+function _uniqueValues(eData, sData, gData) {
+  return Array.from(new Set([...eData, ...sData, ...gData]));
+}
+
+function _stackedBarChartData(uniqueValues, eData, sData, gData) {
+  return uniqueValues.map((value) => {
+    const eCount = eData.filter((item) => item === value).length;
+    const sCount = sData.filter((item) => item === value).length;
+    const gCount = gData.filter((item) => item === value).length;
+
+    return {
+      value,
+      E: eCount,
+      S: sCount,
+      G: gCount,
+    };
+  });
+}
+
+function _selectedSeries(Inputs) {
+  return Inputs.checkbox(["E", "S", "G"], {
+    label: "Choose datasets",
+    value: ["E", "S", "G"],
+  });
+}
+
+function _28(Plot, uniqueValues, selectedSeries, stackedBarChartData) {
+  return Plot.plot({
+    height: 600,
+    title: "Stacked Bar Chart",
+    x: {
+      label: "Value",
+      domain: uniqueValues,
+      padding: 0.1,
+    },
+    y: {
+      label: "Count",
+      grid: true,
+    },
+    color: {
+      legend: true,
+    },
+    marks: selectedSeries.map((series) => {
+      return Plot.barY(
+        stackedBarChartData,
+        Plot.stackY({ x: "value", y: series, fill: series })
+      );
+    }),
+  });
+}
+
+function _29(md) {
+  return md`
+### 結論
+
+1. 受訪者普遍認為藝術與社會責任之間的相關性較強，而與環境保護或機構治理的相關性較弱。
+2. 最高的平均評分是社會責任，表明參與者認為藝術與社會議題之間存在重要聯繫。環境保護也被認為與藝術相關度中等至高，但相對於社會責任，回答的變異性更大。
+3. 藝術與機構治理之間的相關性被認為是三個類別中最弱的，這表現在其較低的平均分和回答分布較廣的特點。
+  `;
+}
+
 export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() {
@@ -626,5 +708,33 @@ export default function define(runtime, observer) {
   main
     .variable(observer("breadcrumbHeight"))
     .define("breadcrumbHeight", _breadcrumbHeight);
+  main.variable(observer("eData")).define("eData", ["artist"], _eData);
+  main.variable(observer("sData")).define("sData", ["artist"], _sData);
+  main.variable(observer("gData")).define("gData", ["artist"], _gData);
+  main
+    .variable(observer("uniqueValues"))
+    .define("uniqueValues", ["eData", "sData", "gData"], _uniqueValues);
+  main
+    .variable(observer("stackedBarChartData"))
+    .define(
+      "stackedBarChartData",
+      ["uniqueValues", "eData", "sData", "gData"],
+      _stackedBarChartData
+    );
+  main
+    .variable(observer("viewof selectedSeries"))
+    .define("viewof selectedSeries", ["Inputs"], _selectedSeries);
+  main
+    .variable(observer("selectedSeries"))
+    .define("selectedSeries", ["Generators", "viewof selectedSeries"], (G, _) =>
+      G.input(_)
+    );
+  main
+    .variable(observer())
+    .define(
+      ["Plot", "uniqueValues", "selectedSeries", "stackedBarChartData"],
+      _28
+    );
+  main.variable(observer()).define(["md"], _29);
   return main;
 }
