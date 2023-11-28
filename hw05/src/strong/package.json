@@ -1,0 +1,14 @@
+{
+  "name": "ed0436cc900e12e2",
+  "main": "ed0436cc900e12e2@24.js",
+  "version": "24.0.0",
+  "homepage": "https://observablehq.com/d/ed0436cc900e12e2",
+  "author": {
+    "name": "北科大-周玟瑄's Workspace",
+    "url": "https://observablehq.com/@bei-ke-da-zhou-wen-xuan-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}

@@ -1,275 +1,530 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant-TW">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- D3, jquery -->
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
+    <!-- D3, jquery -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      charset="utf-8"
+    ></script>
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<title>作品集 Portfolio</title>
-<!-- https://alexlenail.me/NN-SVG/about.html -->
-<link rel="icon" href="../hw00/favicon.svg"/>
-<style type="text/css">
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap');
+    <title>作品集 Portfolio</title>
+    <!-- https://alexlenail.me/NN-SVG/about.html -->
+    <link rel="icon" href="../hw00/favicon.svg" />
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap");
 
-  table {
-  border-collapse: collapse;
-  border: 2px solid white; /* rgba(217,140,144,1) */
-  font-size:  12pt;
-  margin-left: auto;
-  margin-right: auto;
-  }
+      table {
+        border-collapse: collapse;
+        border: 2px solid white; /* rgba(217,140,144,1) */
+        font-size: 12pt;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-  td,
-  th {
-  border: 1px solid white;
-  padding: 2px 8px;
-  }
+      td,
+      th {
+        border: 1px solid white;
+        padding: 2px 8px;
+      }
 
-  .flipswitch
-  {
-      position: relative;
-      background: white;
-      width: 120px;
-      height: 20px;
-      -webkit-appearance: initial;
-      border-radius: 3px;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      outline:none;
-      font-size: 14px;
-      font-family: Trebuchet, Arial, sans-serif;
-      font-weight: bold;
-      cursor:pointer;
-      border:1px solid #ddd;
-  }
-  .flipswitch:after
-  {
-      position:absolute;
-      top:5%;
-      display:block; 
-      line-height:16px;
-      width:45%;
-      height:90%;
-      background:#fff;
-      box-sizing:border-box;
-      text-align:center;
-      transition: all 0.3s ease-in 0s; 
-      color:rgba(159,53,58,1);
-      border:#888 1px solid;
-      border-radius:3px;
-  }
-  .flipswitch:after
-  {
-      left:2%;
-      content: "未完成";
-  }
-  .flipswitch:checked:after
-  {
-      left:53%;
-      content: "完成";
-  }
+      .flipswitch {
+        position: relative;
+        background: white;
+        width: 120px;
+        height: 20px;
+        -webkit-appearance: initial;
+        border-radius: 3px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        outline: none;
+        font-size: 14px;
+        font-family: Trebuchet, Arial, sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        border: 1px solid #ddd;
+      }
+      .flipswitch:after {
+        position: absolute;
+        top: 5%;
+        display: block;
+        line-height: 16px;
+        width: 45%;
+        height: 90%;
+        background: #fff;
+        box-sizing: border-box;
+        text-align: center;
+        transition: all 0.3s ease-in 0s;
+        color: rgba(159, 53, 58, 1);
+        border: #888 1px solid;
+        border-radius: 3px;
+      }
+      .flipswitch:after {
+        left: 2%;
+        content: "未完成";
+      }
+      .flipswitch:checked:after {
+        left: 53%;
+        content: "完成";
+      }
 
-  body {
-    background-color: rgb(106, 76, 156); /* #6A4C9C */
-    color: rgb(106, 76, 156);
-    font-family: 'Noto Serif JP', serif;
-  }
+      body {
+        background-color: rgb(106, 76, 156); /* #6A4C9C */
+        color: rgb(106, 76, 156);
+        font-family: "Noto Serif JP", serif;
+      }
 
-  .container-fluid {
-    width:  90%;
-  }
+      .container-fluid {
+        width: 90%;
+      }
 
-  .hw12 {
-    border: 1px solid rgb(159, 53, 58);
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
+      .hw12 {
+        border: 1px solid rgb(159, 53, 58);
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
 
-  .twenty {
-    border: 1px solid #f9eced;
-    color: #f9eced;
-    padding: 8px;
-    font-size: 16pt;
-  }
+      .twenty {
+        border: 1px solid #f9eced;
+        color: #f9eced;
+        padding: 8px;
+        font-size: 16pt;
+      }
 
-  .twenty:hover {
-      box-shadow: 0 0 5px 3px #f9eced;
-      color: cyan; 
-      text-shadow: 0 0 6px #FFFFFF, 0 0 6px #000000;
-  }
+      .twenty:hover {
+        box-shadow: 0 0 5px 3px #f9eced;
+        color: cyan;
+        text-shadow: 0 0 6px #ffffff, 0 0 6px #000000;
+      }
 
-  .github-corner:hover 
-  .octo-arm {
-    animation: octocat-wave 560ms ease-in-out
-  }
-  @keyframes octocat-wave {
-    0%,100% {
-      transform:rotate(0)
-    }
-    20%,60% {
-      transform:rotate(-25deg)
-    }
-    40%,80% {
-      transform:rotate(10deg)
-    }
-  }
-  @media (max-width:500px) {
-    .github-corner:hover 
-    .octo-arm {
-      animation:none
-    }
+      .github-corner:hover .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+      }
+      @keyframes octocat-wave {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        20%,
+        60% {
+          transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+          transform: rotate(10deg);
+        }
+      }
+      @media (max-width: 500px) {
+        .github-corner:hover .octo-arm {
+          animation: none;
+        }
 
-    .github-corner 
-    .octo-arm {
-      animation: octocat-wave 560ms ease-in-out
-    }
-  }
+        .github-corner .octo-arm {
+          animation: octocat-wave 560ms ease-in-out;
+        }
+      }
 
-  /* 波浪 */
-  a {
-    color:yellow;
-    text-decoration: none; 
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23fff' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%; 
-    background-size:20px auto; 
-    animation: waveMove 1s infinite linear;
-  }
+      /* 波浪 */
+      a {
+        color: yellow;
+        text-decoration: none;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23fff' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E")
+          repeat-x 0 100%;
+        background-size: 20px auto;
+        animation: waveMove 1s infinite linear;
+      }
 
-  a:hover {
-    color:#f30;
-    text-decoration: none;
-    background: none;
-    animation: none;
-    text-decoration: underline;
-    padding:2px 0;
-  }
-  @keyframes waveMove {
-    from { background-position:0 100%; }
-    to { background-position:20px 100%; }
-  }
-  /* 波浪 */
-</style>
-</head>
-<body>
-<!-- https://alexlenail.me/NN-SVG/about.html -->
-<a href="https://tjhsieh.github.io/c/vis/vis2023f/syllabus/index.html" class="github-corner" aria-label="View source on Github">
-  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#f9eced; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="#f9eced" stroke="#6A4C9C" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#f9eced" stroke="#6A4C9C" class="octo-body"></path>
-  </svg>
-</a>
+      a:hover {
+        color: #f30;
+        text-decoration: none;
+        background: none;
+        animation: none;
+        text-decoration: underline;
+        padding: 2px 0;
+      }
+      @keyframes waveMove {
+        from {
+          background-position: 0 100%;
+        }
+        to {
+          background-position: 20px 100%;
+        }
+      }
+      /* 波浪 */
+    </style>
+  </head>
+  <body>
+    <!-- https://alexlenail.me/NN-SVG/about.html -->
+    <a
+      href="https://tjhsieh.github.io/c/vis/vis2023f/syllabus/index.html"
+      class="github-corner"
+      aria-label="View source on Github"
+    >
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 250 250"
+        style="
+          fill: #f9eced;
+          color: #fff;
+          position: absolute;
+          top: 0;
+          border: 0;
+          right: 0;
+        "
+        aria-hidden="true"
+      >
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path
+          d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+          fill="#f9eced"
+          stroke="#6A4C9C"
+          style="transform-origin: 130px 106px"
+          class="octo-arm"
+        ></path>
+        <path
+          d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+          fill="#f9eced"
+          stroke="#6A4C9C"
+          class="octo-body"
+        ></path>
+      </svg>
+    </a>
 
-<div class="container-fluid">
+    <div class="container-fluid">
+      <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h1>作業 05</h1>
+        </div>
+      </div>
 
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <h1>作業 05</h1>
+      <!-- ------------------------------------------------>
+
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h4>前往repo</h4>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <a
+            href="https://github.com/KatoToyoki/vis2023f/tree/main/hw05/src/simple"
+            >simple repo</a
+          >
+          <hr />
+          <a
+            href="https://github.com/KatoToyoki/vis2023f/tree/main/hw05/src/medium"
+            >medium repo</a
+          >
+          <hr />
+          <a
+            href="https://github.com/KatoToyoki/vis2023f/tree/main/hw05/src/strong"
+            >strong repo</a
+          >
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------>
+      <!-- ------------------------------------------------>
+
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h4>前往demo 網頁</h4>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <a
+            href="https://katotoyoki.github.io/vis2023f/hw05/src/simple/index.html"
+            >simple demo</a
+          >
+          <hr />
+          <a
+            href="https://katotoyoki.github.io/vis2023f/hw05/src/medium/index.html"
+            >medium demo</a
+          >
+          <hr />
+          <a
+            href="https://katotoyoki.github.io/vis2023f/hw05/src/strong/index.html"
+            >strong demo</a
+          >
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          這次的作業要做的是力導向圖。我覺得作為使用者而言，可以互動的圖表還蠻有趣的。而且這個圖還是可以拖拉的。這種圖的結構就會讓我想到link
+          list的node。雖然我覺得要使用node跟link之類的東西都很複雜也麻煩，除了視覺的部分，也要處理行為（動作）的部分，但是圖表的效果看起來真的蠻好的。
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h4><u>成績確認表</u></h4>
+          <table style="width: 100%">
+            <tr>
+              <th>總分</th>
+              <th>完成後打勾</th>
+              <th>配分</th>
+              <th>等級</th>
+              <th>分項描述</th>
+            </tr>
+            <tr>
+              <td rowspan="8" id="myTotal"></td>
+              <td>
+                <input
+                  type="checkbox"
+                  class="flipswitch"
+                  id="myCheckbox1"
+                  checked="checked"
+                />
+              </td>
+              <td id="m1">1</td>
+              <td>Simple baseline</td>
+              <td>(1)實作Force-directed tree呈現分組情況</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="flipswitch"
+                  id="myCheckbox2"
+                  checked="checked"
+                />
+              </td>
+              <td id="m2">1</td>
+              <td></td>
+              <td>(2)使節點可以被拖拉移動</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="flipswitch"
+                  id="myCheckbox3"
+                  checked="checked"
+                />
+              </td>
+              <td id="m3">1</td>
+              <td></td>
+              <td>(3)將個人圖片放入節點圓圈中</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="flipswitch"
+                  id="myCheckbox4"
+                  checked="checked"
+                />
+              </td>
+              <td id="m4">1</td>
+              <td>Medium baseline</td>
+              <td>(1)滑鼠移動過去顯示該成員相關資訊</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="flipswitch"
+                  id="myCheckbox5"
+                  checked="checked"
+                />
+              </td>
+              <td id="m5">2</td>
+              <td></td>
+              <td>(2)滑鼠移動過去放大節點及圖片</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="flipswitch"
+                  id="myCheckbox6"
+                  checked="checked"
+                />
+              </td>
+              <td id="m6">2</td>
+              <td></td>
+              <td>(3)點擊節點可以展開或縮放</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  class="flipswitch"
+                  id="myCheckbox7"
+                  checked="checked"
+                />
+              </td>
+              <td id="m7">2</td>
+              <td>Strong baseline</td>
+              <td>利用蘋果成績圖環繞個人照片(小組)</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h4>
+            <u>Simple_baseline</u>
+            <div>
+              我把三個放在同一個notebook，要往下拉才看得到。使用的資料集照著講義的方式我只有擷取我這一組的名單
+            </div>
+          </h4>
+          <br />
+          <table style="width: 100%">
+            <tr>
+              <ul>
+                <li>實作Force-directed tree呈現分組情況</li>
+                <li>使節點可以被拖拉移動</li>
+                <li>將個人圖片放入節點圓圈中</li>
+              </ul>
+            </tr>
+            <tr>
+              <iframe
+                width="100%"
+                height="500"
+                frameborder="0"
+                style="background-color: #ffffff"
+                src="https://observablehq.com/embed/e7a68ff51db9cb32@61?cell=*"
+              ></iframe>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h4>
+            <u>Medium_baseline</u>
+            <div>
+              我把三個放在同一個notebook，要往下拉才看得到。使用的資料集照著講義的方式我只有擷取我這一組的名單
+            </div>
+          </h4>
+          <br />
+          <table style="width: 100%">
+            <tr>
+              <ul>
+                <li>滑鼠移動過去顯示該成員相關資訊</li>
+                <li>滑鼠移動過去放大節點及圖片</li>
+                <li>點擊節點可以展開或縮放</li>
+              </ul>
+            </tr>
+            <tr>
+              <iframe
+                width="100%"
+                height="500"
+                frameborder="0"
+                style="background-color: #ffffff"
+                src="https://observablehq.com/embed/73614e7b18283a2b@39?cell=*"
+              ></iframe>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h4>
+            <u>Strong_baseline</u>
+            <div>使用的資料集照著講義的方式我只有擷取我這一組的名單</div>
+          </h4>
+          <br />
+          <table style="width: 100%">
+            <tr>
+              <ul>
+                <li>利用蘋果成績圖環繞個人照片(小組)</li>
+              </ul>
+            </tr>
+            <tr>
+              <iframe
+                width="100%"
+                height="500"
+                frameborder="0"
+                style="background-color: #ffffff"
+                src="https://observablehq.com/embed/ed0436cc900e12e2@24?cell=*"
+              ></iframe>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
+    <!-- ------------------------------------------------>
 
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      該次作業程式碼，請放在 https://github.com/<span style="color:red;">你的帳號</span>/vis2023f/hw<span style="color:red;">05</span>/src/ 檔案夾。
-    </div>
-  </div>
+    <!-- ------------------------------------------------>
 
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
-    </div>
-  </div>
+    <script>
+      $(function () {
+        var f = function () {
+          $(this)
+            .next()
+            .text($(this).is(":checked") ? "做完" : "未做完");
+        };
+        $("input").change(f).trigger("change");
+      });
 
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <table>
-        <tr>
-          <th>總分</th>
-          <th>完成後打勾</th>
-          <th>配分</th>
-          <th>分項描述</th>
-        </tr>
-        <tr>
-          <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
-          <td id='m1'>2</td>
-          <td>Simple baseline - 描述、描述、描述</td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>6</td>
-          <td>Medium baseline - 描述、描述、描述 </td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
-          <td id='m3'>2</td>
-          <td>Strong baseline - 描述、描述、描述 </td>
-        </tr>
-      </table>
-    </div>
-  </div>
+      d3.select("#myCheckbox1").on("change", update);
+      d3.select("#myCheckbox2").on("change", update);
+      d3.select("#myCheckbox3").on("change", update);
+      d3.select("#myCheckbox4").on("change", update);
+      d3.select("#myCheckbox5").on("change", update);
+      d3.select("#myCheckbox6").on("change", update);
+      d3.select("#myCheckbox7").on("change", update);
 
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
+      update();
 
-  <!-- ------------------------------------------------>
+      function update() {
+        var score = 0;
 
-  <!-- ------------------------------------------------>
+        if (d3.select("#myCheckbox1").property("checked")) {
+          score += parseInt(d3.select("#m1").html());
+        }
 
+        if (d3.select("#myCheckbox2").property("checked")) {
+          score += parseInt(d3.select("#m2").html());
+        }
 
-<script>
-  $(function() {
-    var f = function() {
-      $(this).next().text($(this).is(':checked') ? '做完' : '未做完');
-    };
-    $('input').change(f).trigger('change');
-  });
+        if (d3.select("#myCheckbox3").property("checked")) {
+          score += parseInt(d3.select("#m3").html());
+        }
 
-  d3.select("#myCheckbox1").on("change",update);
-  d3.select("#myCheckbox2").on("change",update);
-  d3.select("#myCheckbox3").on("change",update);
-  d3.select("#myCheckbox4").on("change",update);
-  d3.select("#myCheckbox5").on("change",update);
-  d3.select("#myCheckbox6").on("change",update);
-  d3.select("#myCheckbox7").on("change",update);
+        if (d3.select("#myCheckbox4").property("checked")) {
+          score += parseInt(d3.select("#m4").html());
+        }
 
-  update();
-  
-  function update(){
+        if (d3.select("#myCheckbox5").property("checked")) {
+          score += parseInt(d3.select("#m5").html());
+        }
 
-    var score = 0;
+        if (d3.select("#myCheckbox6").property("checked")) {
+          score += parseInt(d3.select("#m6").html());
+        }
 
-    if (d3.select("#myCheckbox1").property("checked")){
-      score += parseInt(d3.select('#m1').html());
-    }
+        if (d3.select("#myCheckbox7").property("checked")) {
+          score += parseInt(d3.select("#m7").html());
+        }
 
-    if (d3.select("#myCheckbox2").property("checked")){
-      score += parseInt(d3.select('#m2').html());   
-    }
-
-    if (d3.select("#myCheckbox3").property("checked")){
-      score += parseInt(d3.select('#m3').html());   
-    }
-
-    d3.select("#myTotal").html(score);    
-  }
-</script>
-
-</body>
+        d3.select("#myTotal").html(score);
+      }
+    </script>
+  </body>
 </html>
