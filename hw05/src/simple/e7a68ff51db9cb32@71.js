@@ -10,11 +10,11 @@ function _2(md) {
   `;
 }
 
-function _simple1(d3, simple, invalidation) {
-  const width = 500;
-  const height = 500;
+function _simple1(d3, all, invalidation) {
+  const width = 1000;
+  const height = 1200;
 
-  const root = d3.hierarchy(simple);
+  const root = d3.hierarchy(all);
   const links = root.links();
   const nodes = root.descendants();
 
@@ -102,11 +102,11 @@ function _4(md) {
   `;
 }
 
-function _simple2(d3, simple, drag, invalidation) {
-  const width = 500;
-  const height = 500;
+function _simple2(d3, all, drag, invalidation) {
+  const width = 1000;
+  const height = 1200;
 
-  const root = d3.hierarchy(simple);
+  const root = d3.hierarchy(all);
   const links = root.links();
   const nodes = root.descendants();
 
@@ -195,11 +195,11 @@ function _6(md) {
   `;
 }
 
-function _simple3(d3, simple, drag, invalidation) {
-  const width = 500;
-  const height = 500;
+function _simple3(d3, all, drag, invalidation) {
+  const width = 1000;
+  const height = 1200;
 
-  const root = d3.hierarchy(simple);
+  const root = d3.hierarchy(all);
   const links = root.links();
   const nodes = root.descendants();
 
@@ -298,6 +298,10 @@ function _simple(FileAttachment) {
   return FileAttachment("simple.json").json();
 }
 
+function _all(FileAttachment) {
+  return FileAttachment("output.json").json();
+}
+
 function _drag(d3) {
   return (simulation) => {
     function dragstarted(event, d) {
@@ -332,6 +336,14 @@ export default function define(runtime, observer) {
   }
   const fileAttachments = new Map([
     [
+      "output.json",
+      {
+        url: new URL("../output.json", import.meta.url),
+        mimeType: "application/json",
+        toString,
+      },
+    ],
+    [
       "simple.json",
       {
         url: new URL("../simple.json", import.meta.url),
@@ -348,18 +360,19 @@ export default function define(runtime, observer) {
   main.variable(observer()).define(["md"], _2);
   main
     .variable(observer("simple1"))
-    .define("simple1", ["d3", "simple", "invalidation"], _simple1);
+    .define("simple1", ["d3", "all", "invalidation"], _simple1);
   main.variable(observer()).define(["md"], _4);
   main
     .variable(observer("simple2"))
-    .define("simple2", ["d3", "simple", "drag", "invalidation"], _simple2);
+    .define("simple2", ["d3", "all", "drag", "invalidation"], _simple2);
   main.variable(observer()).define(["md"], _6);
   main
     .variable(observer("simple3"))
-    .define("simple3", ["d3", "simple", "drag", "invalidation"], _simple3);
+    .define("simple3", ["d3", "all", "drag", "invalidation"], _simple3);
   main
     .variable(observer("simple"))
     .define("simple", ["FileAttachment"], _simple);
+  main.variable(observer("all")).define("all", ["FileAttachment"], _all);
   main.variable(observer("drag")).define("drag", ["d3"], _drag);
   return main;
 }
