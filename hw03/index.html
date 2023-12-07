@@ -174,18 +174,64 @@
       <h1>作業 03</h1>
     </div>
   </div>
+ <!-- ------------------------------------------------>
 
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      該次作業程式碼，請放在 https://github.com/<span style="color:red;">你的帳號</span>/vis2023f/hw<span style="color:red;">03</span>/src/ 檔案夾。
-    </div>
+ <div class="row hw12">
+  <div class="col-md-12 twenty">
+    <h4>前往repo</h4>
   </div>
+</div>
 
-  <!-- ------------------------------------------------>
+<!-- ------------------------------------------------>
+<div class="row hw12">
+  <div class="col-md-12 twenty">
+    <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw03/simple"
+      >simple repo</a
+    >
+    <hr />
+    <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw03/medium"
+      >medium repo</a
+    >
+    <hr />
+    <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw03/strong"
+      >strong repo</a
+    >
+  </div>
+</div>
+
+<!-- ------------------------------------------------>
+<!-- ------------------------------------------------>
+
+<div class="row hw12">
+  <div class="col-md-12 twenty">
+    <h4>前往demo 網頁</h4>
+  </div>
+</div>
+
+<!-- ------------------------------------------------>
+<div class="row hw12">
+  <div class="col-md-12 twenty">
+    <a href="https://katotoyoki.github.io/vis2023f/hw03/simple/index.html"
+      >simple demo</a
+    >
+    <hr />
+    <a href="https://katotoyoki.github.io/vis2023f/hw03/medium/index.html"
+      >medium demo</a
+    >
+    <hr />
+    <a href="https://katotoyoki.github.io/vis2023f/hw03/strong/index.html"
+      >strong demo</a
+    >
+  </div>
+</div>
+
+<!-- ------------------------------------------------>
+
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
+      這次作業要進行json檔案相關的處理。我之前讀寫檔案的經驗一直都是使用json，所以倍感親切。
+      我覺得json就跟python的dictionary很像。有key跟value，key的話可以取那種很好辨識的名字這樣就可以直接變數.加上key的名字來取用value的值。
+      而我覺得很有趣的是json除了一般的json，還有GeoJSON跟TopoJSON。目前可能暫時沒有需要用到他們的情況，但之後如果需要用到它們的話，這些應該會很方便。
     </div>
   </div>
 
@@ -200,21 +246,30 @@
           <th>分項描述</th>
         </tr>
         <tr>
-          <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
-          <td id='m1'>2</td>
-          <td>Simple baseline - 描述、描述、描述</td>
+          <td rowspan="0" id="myTotal"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked></td>
+          <td id='m1'>1</td>
+          <td>Simple baseline-1 - 播放自己的參訪路徑</td>
         </tr>
-        <tr>
+
+         <tr>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>6</td>
-          <td>Medium baseline - 描述、描述、描述 </td>
+          <td id='m2'>2</td>
+          <td>Simple baseline-2 - 計算自己的移動距離/卡路里</td>
         </tr>
+        
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
-          <td id='m3'>2</td>
-          <td>Strong baseline - 描述、描述、描述 </td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
+          <td id='m3'>3</td>
+          <td>Medium baseline - 美術館樓層平面圖行走軌跡</td>
         </tr>
+        
+        <tr>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked></td>
+          <td id='m4'>4</td>
+          <td>Strong baseline - 建立課程班上學生居住縣市人數的 Choropleth</td>
+        </tr>
+
       </table>
     </div>
   </div>
@@ -222,9 +277,36 @@
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
+      <div class="center">
+        <h4>simple</h4>
+        <p>
+          四個樓層要往下滑才看得到全部
+        </p>
+      </div>
+      <div class="center">
+        <iframe src="src/simple/index.html" width="100%" height="720px"></iframe>
+      </div>
+    </div>
+
+    <div class="col-md-12 twenty">
+      <div class="center">
+        <h4>medium</h4>
+        <p>
+          四個樓層要往下滑才看得到全部
+        </p>
+      </div>
+      <div class="center">
+        <iframe src="src/medium/index.html" width="100%" height="720px"></iframe>
+      </div>
+    </div>
+
+    <div class="col-md-12 twenty">
+      <div class="center">
+        <h4>strong</h4>
+      </div>
+      <div class="center">
+        <iframe src="src/strong/index.html" width="100%" height="720px"></iframe>
+      </div>
     </div>
   </div>
 
@@ -265,6 +347,10 @@
 
     if (d3.select("#myCheckbox3").property("checked")){
       score += parseInt(d3.select('#m3').html());   
+    }
+
+    if (d3.select("#myCheckbox4").property("checked")){
+      score += parseInt(d3.select('#m4').html());   
     }
 
     d3.select("#myTotal").html(score);    
