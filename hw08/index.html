@@ -178,14 +178,18 @@
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      該次作業程式碼，請放在 https://github.com/<span style="color:red;">你的帳號</span>/vis2023f/hw<span style="color:red;">08</span>/src/ 檔案夾。
+      打開src資料夾
+      <a href="https://github.com/KatoToyoki/vis2023f/tree/main/hw08/src"
+      >按我٩(｡・ω・｡)و</a>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
+      作業8真的要自己用unity了嗎，我完全沒用過他，所以剛開始操作的時候真的一頭霧水不知道從何開始。c#有碰過一些，只差在unity的介面。<br/>
+      然後我查了一下怎麼用執行script，用script生成quad, sphere，然後讀json，做表格。<br/>
+      我在裡面有一個地方印象很深刻是我在轉時間，要取得time span的時候出現exception，想說為啥我感覺程式沒什麼問題，後來才發現是json的裡面的string格式不符合，所以沒辦法轉。真沒意料到是資料出錯。
     </div>
   </div>
 
@@ -197,36 +201,215 @@
           <th>總分</th>
           <th>完成後打勾</th>
           <th>配分</th>
+          <th>等級</th>
           <th>分項描述</th>
         </tr>
         <tr>
-          <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
-          <td id='m1'>2</td>
-          <td>Simple baseline - 描述、描述、描述</td>
+          <td rowspan="8" id="myTotal"></td>
+          <td>
+            <input
+              type="checkbox"
+              class="flipswitch"
+              id="myCheckbox1"
+              checked="checked"
+            />
+          </td>
+          <td id="m1">2</td>
+          <td>Simple baseline</td>
+          <td>(1)使用影片觀看有氧漫遊圖表回答問題</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>6</td>
-          <td>Medium baseline - 描述、描述、描述 </td>
+          <td>
+            <input
+              type="checkbox"
+              class="flipswitch"
+              id="myCheckbox2"
+              checked="checked"
+            />
+          </td>
+          <td id="m2">2</td>
+          <td></td>
+          <td>(2)使用執行檔觀看主題遊圖表回答問題</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
-          <td id='m3'>2</td>
-          <td>Strong baseline - 描述、描述、描述 </td>
+          <td>
+            <input
+              type="checkbox"
+              class="flipswitch"
+              id="myCheckbox3"
+              checked="checked"
+            />
+          </td>
+          <td id="m3">2</td>
+          <td>Medium baseline</td>
+          <td>(3)觀察有氧漫遊的資料回答問題</td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="checkbox"
+              class="flipswitch"
+              id="myCheckbox4"
+              checked="checked"
+            />
+          </td>
+          <td id="m4">1</td>
+          <td></td>
+          <td>(4)觀察主題遊的資料集回答問題</td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="checkbox"
+              class="flipswitch"
+              id="myCheckbox5"
+              checked="checked"
+            />
+          </td>
+          <td id="m5">2</td>
+          <td>Strong baseline</td>
+          <td>(5)參考執行檔製作出自己的虛擬可視化圖表</td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="checkbox"
+              class="flipswitch"
+              id="myCheckbox6"
+              checked="checked"
+            />
+          </td>
+          <td id="m6">1</td>
+          <td></td>
+          <td>(6)成功讀取主題遊資料並呈現</td>
         </tr>
       </table>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
+
+  <!-- ------------------------------------------------>
+      <div class="row hw12">
+        <div class="col-md-12 twenty">
+          <h4><u>Simple baseline</u></h4>
+          <h4><u>使用影片觀看有氧漫遊圖表回答問題(2pt)</u></h4>
+          <h5>
+            1. 回答數總計最高的是哪個問題哪個選項? (1pt)
+          </h5>
+          <h5>
+            Answer:<br/> 
+            粗略估計<br/>
+            健康...意願那題：10 + 10 + 60 + 90 = 170<br/>
+            行走...意願那題：20 + 20 + 70 + 70 = 180 <br/>
+            位置那題：20 + 30 + 60 + 70 = 180<br/>
+            數據確實記錄那題：20 + 20 + 60 + 70 = 170<br/>
+            我選第2跟第3題，他們感覺差不多多。<br/><br/>
+          </h5>
+
+          <h5>
+            2. 回答數總計最低的是哪個問題哪個選項? (1pt)
+          </h5>
+          <h5>
+            Answer:<br/> 
+            粗略估計<br/>
+            健康...意願那題：10 + 10 + 60 + 90 = 170<br/>
+            行走...意願那題：20 + 20 + 70 + 70 = 180 <br/>
+            位置那題：20 + 30 + 60 + 70 = 180<br/>
+            數據確實記錄那題：20 + 20 + 60 + 70 = 170<br/>
+            我選第1跟第4題，他們感覺差不多多。<br/><br/>
+          </h5>
+          <h4><u>使用執行檔觀看主題遊圖表回答問題(2pt)</u></h4>
+          <h5>
+            1. 平均時間最快完成的組別是哪一組? (0.5pt)
+          </h5>
+          <h5>
+            Answer: <br/>
+            最低的是第14組，所以我選14。
+          </h5>
+
+          <h5>
+            2. 平均時間最慢完成的組別是哪一組? (0.5pt)
+          </h5>
+          <h5>
+            Answer: <br/>
+            最高的是第11組，所以我選11。
+          </h5>
+
+          <h5>
+            3. 你從圖表中觀察到什麼? (1pt)
+
+          </h5>
+          Answer: <br/>
+          平均每組都完成了四個任務以上。大部分都為五個任務全部完成
+          <h5>
+          </h5>
+        </div>
+      </div>
+    <!-- ------------------------------------------------>
+    <!-- ------------------------------------------------>
+    <div class="row hw12">
+      <div class="col-md-12 twenty">
+        <h4><u>Medium baseline</u></h4>
+        <h4><u>觀察有氧漫遊的資料回答問題(2pt)</u></h4>
+        <h5>
+          1. 經過你的觀察，表中的回覆總數大約落在多少?(1pt)
+        </h5>
+        <h5>
+          Answer: <br/>
+          根據上面的統計大概是170~180之間。
+        </h5>
+        <h5>
+          2. 經過你的推斷，甚麼原因可能造成其與實際修課人數有落差?(1pt)
+        </h5>
+        <h5>
+          Answer: <br/>
+          我有點忘記這是不是單選題了，但我覺得最可能的原因大概就是重複計算到。
+        </h5>
+        <h4><u>使用執行檔觀看主題遊圖表以及主題遊資料回答問題(1pt)</u></h4>
+        <h5>
+          1. 根據資料集收集到的資料，你覺得還可以做成什麼樣的虛擬視覺化圖表?(1pt)
+        </h5>
+        <h5>
+          Answer: 
+        </h5>
+        <div class="row">
+          <div class="col-6">
+            <img src="src/table.jpeg" width="100%"/>
+          </div>
+          <div class="col-6">
+            大概類似這種表格。
+            統計一個學生花最久時間的是哪個任務。
+            有學生學號、任務編號、分鐘數。
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    <!-- ------------------------------------------------>
+    <!-- ------------------------------------------------>
+    <div class="row hw12 twenty">
+      <div class="col-12">
+        <h4><u>Strong baseline</u></h4>
+      </div>
+      <div class="col-12">
+        基本上就是照著上面那個草圖做出來的。<br/>
+        我用script建立Quad（表格）跟Sphere（點）。<br/>
+        資料的話我讀取json檔案，我有先將每個人的檔名調成學號。接著讀裡面的任務編號、時間取得時間差time span。<br/>
+        然後根據資料來生成位置，把sphere放在對應的位置上。<br/>
+        他很簡略是因為我之前沒有用過unity，我盡力在時間內趕出來了。<br/>
+        備註：只有五個人是因為我只有這五個人的json，都是同組組員。<br/>
+        <a href="https://github.com/KatoToyoki/data-visualization-unity">完整的repo在這裡</a>
+      </div>
+      <div class="col-md-12 twenty">
+        <video id="video1" style="width:100%;max-width:100%;" controls="">
+          <source src="src/hw08.mp4" type="video/mp4">
+        </video>
+      </div>
+     
+    </div>
+
+    <!-- ------------------------------------------------>
+
 
   <!-- ------------------------------------------------>
 
@@ -266,6 +449,19 @@
     if (d3.select("#myCheckbox3").property("checked")){
       score += parseInt(d3.select('#m3').html());   
     }
+
+    if (d3.select("#myCheckbox4").property("checked")){
+      score += parseInt(d3.select('#m4').html());
+    }
+
+    if (d3.select("#myCheckbox5").property("checked")){
+      score += parseInt(d3.select('#m5').html());   
+    }
+
+    if (d3.select("#myCheckbox6").property("checked")){
+      score += parseInt(d3.select('#m6').html());   
+    }
+
 
     d3.select("#myTotal").html(score);    
   }
